@@ -1,0 +1,11 @@
+version: '3'
+services:
+    builder:
+      image: amarkwalder/amarkwalder.github.io-builder
+      build:
+        context: .
+        dockerfile: Dockerfile.build
+      environment:
+        - BUILD_NO
+      volumes:
+        - ./builds:/builds

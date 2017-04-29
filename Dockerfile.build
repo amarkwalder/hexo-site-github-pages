@@ -1,0 +1,16 @@
+FROM node:6.10.2-alpine
+
+MAINTAINER André Markwalder <andre.markwalder@gmail.com>
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache bash git && \
+    npm install hexo-cli -g
+
+#RUN apt-get -y update && \
+#    apt-get -y upgrade && \
+#    apt-get -y install bash git
+
+COPY build.sh /
+
+CMD [ "/build.sh" ]
