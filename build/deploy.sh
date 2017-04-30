@@ -6,6 +6,11 @@ if [ -z "${GITHUB_USER}" ]; then
   exit 1
 fi
 
+if [ -z "${GITHUB_EMAIL}" ]; then
+  echo "ABORT: env GITHUB_EMAIL is missing"
+  exit 1
+fi
+
 if [ -z "${GITHUB_REPO}" ]; then
   echo "ABORT: env GITHUB_REPO is missing"
   exit 1
@@ -34,8 +39,8 @@ fi
 cd ${BUILD_DEST}/${GITHUB_REPO}
 rm -rf .git
 git init
-git config user.email "---"
-git config user.name "---"
+git config user.email "${GITHUB_EMAIL}"
+git config user.name "${GITHUB_USER}"
 git add --all
 git commit -m "${GITHUB_RELTEXT}"
 git remote add origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_USER}/${GITHUB_USER}.github.io.git

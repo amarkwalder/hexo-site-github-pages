@@ -14,12 +14,13 @@ services:
       - ${WORKDIR}/builds:/tmp/builds
 
   deployer:
-    image: amarkwalder/amarkwalder.github.io-deployer:0.1.0
+    image: amarkwalder/amarkwalder.github.io-deployer:0.1.1
     build:
       context: .
       dockerfile: Dockerfile.deploy
     environment:
       - GITHUB_USER
+      - GITHUB_EMAIL
       - GITHUB_REPO
       - GITHUB_TOKEN
       - BUILD_NO
