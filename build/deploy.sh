@@ -21,5 +21,22 @@ if [ -z "${BUILD_NO}" ]; then
   exit 1
 fi
 
+if [ -z "${TRAVIS_BUILD_NUMBER}" ]; then
+  echo "ABORT: env TRAVIS_BUILD_NUMBER is missing"
+  exit 1
+fi
+
+if [ -z "${TRAVIS_REPO_SLUG}" ]; then
+  echo "ABORT: env TRAVIS_REPO_SLUG is missing"
+  exit 1
+fi
+
+if [ -z "${TRAVIS_BUILD_ID}" ]; then
+  echo "ABORT: env TRAVIS_BUILD_ID is missing"
+  exit 1
+fi
+
+GITHUB_RELTEXT="Auto-released by [Travis-CI build #${TRAVIS_BUILD_NUMBER}](https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID})"
+
 ghr --version
-ghr --debug -u "${GITHUB_USER}" -r "${GITHUB_REPO}" -b "" "v${BUILD_NO}" /builds/${BUILD_NO}/
+ghr --debug -u "${GITHUB_USER}" -r "${GITHUB_REPO}" -b "${GITHUB_RELTEXT}" "v${BUILD_NO}" /builds/${BUILD_NO}/
