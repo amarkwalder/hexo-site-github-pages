@@ -7,18 +7,20 @@ services:
       context: .
       dockerfile: Dockerfile.build
     environment:
+      - WORKDIR
       - GITHUB_USER
       - GITHUB_REPO
       - BUILD_NO
     volumes:
-      - ./builds:/builds
+      - ${WORKDIR}/builds:/tmp/builds
 
   deployer:
-    image: amarkwalder/amarkwalder.github.io-deployer:0.1.0
+    image: amarkwalder/amarkwalder.github.io-deployer:0.1.1
     build:
       context: .
       dockerfile: Dockerfile.deploy
     environment:
+      - WORKDIR
       - GITHUB_USER
       - GITHUB_REPO
       - GITHUB_TOKEN
@@ -27,4 +29,4 @@ services:
       - TRAVIS_REPO_SLUG
       - TRAVIS_BUILD_ID
     volumes:
-      - ./builds:/builds
+      - ${WORKDIR}/builds:/tmp/builds

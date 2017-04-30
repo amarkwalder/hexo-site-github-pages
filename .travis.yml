@@ -10,7 +10,7 @@ env:
     - GITHUB_USER=amarkwalder
     - GITHUB_REPO=hexo-site-github-pages
     - BUILD_NO=$(date '+%Y%m%d-%H%M%S')
-
+    - WORKDIR=${TRAVIS_BUILD_DIR}
 install:
   - ./build/travis.sh install
 
