@@ -11,6 +11,14 @@ function install() {
   fi
 }
 
+function push() {
+  docker-compose build builder
+  docker-compose push builder
+
+  docker-compose build deployer
+  docker-compose push deployer
+}
+
 function build() {
   docker-compose run builder
 }
@@ -20,7 +28,7 @@ function deploy() {
 }
 
 function usage() {
-  echo "Usage: $0 [ install | build | deploy ]"
+  echo "Usage: $0 [ install | push | build | deploy ]"
   exit 1
 }
 
@@ -29,6 +37,7 @@ cd ${BASEDIR}
 
 case "${1}" in
   install)  install ;;
+  push)     push ;;
   build)    build ;;
   deploy)   deploy ;;
   "" | *)   usage ;;
