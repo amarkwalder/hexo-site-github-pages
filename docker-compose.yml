@@ -1,11 +1,11 @@
-version: '3'
+version: '2'
 services:
-    builder:
-      image: amarkwalder/amarkwalder.github.io-builder
-      build:
-        context: .
-        dockerfile: Dockerfile.build
-      environment:
-        - BUILD_NO
-      volumes:
-        - ./builds:/builds
+  builder:
+    image: amarkwalder/amarkwalder.github.io-builder
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    environment:
+      - BUILD_NO
+    volumes:
+      - ./builds:/builds
