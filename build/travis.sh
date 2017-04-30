@@ -25,6 +25,9 @@ function usage() {
   exit 1
 }
 
+BASEDIR=$(dirname "$0")
+cd ${BASEDIR}
+
 case "${1}" in
   install)  install ;;
   build)    build ;;
