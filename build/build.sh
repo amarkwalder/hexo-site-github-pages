@@ -30,6 +30,20 @@ echo "node.js : " `node --version | awk '{print substr($0,2)}'`
 echo "git     : " `git --version  | awk -F ' ' '{print $3}'`
 
 mkdir -p ${SOURCE_DIR}
+
+
+
+echo ls -la ${SOURCE_DIR}
+ls -la ${SOURCE_DIR}
+
+echo ls -la ${SOURCE_DIR}/${GITHUB_USER}
+ls -la ${SOURCE_DIR}/${GITHUB_USER}
+
+echo ls -la ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
+ls -la ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
+
+
+
 if [ ! -d "${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}" ]; then
   git clone https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
 fi
