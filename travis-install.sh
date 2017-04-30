@@ -16,4 +16,4 @@ fi
 set -x
 
 # run build
-docker-compose run builder
+docker-compose build builder

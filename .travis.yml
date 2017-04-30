@@ -2,10 +2,14 @@ sudo: required
 services:
   - docker
 language: bash
+env:
+  - BUILD_NO=$(date '+%Y%m%d-%H%M%S')
+install:
+  - ./travis-install.sh
 script:
   - ./travis-build.sh
-after_success:
-  - ls -al builds/$BUILD_NO/*
+deploy:
+  - ./travis-deploy.sh
 branches:
   only:
     - master

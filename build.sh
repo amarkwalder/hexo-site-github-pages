@@ -3,9 +3,8 @@ set -e
 set -x
 
 WORKDIR=/tmp
-BUILD_NO=${BUILD_NO:=$(date '+%Y%m%d-%H%M%S')}
-BUILD_DEST=/builds/$BUILD_NO
-mkdir -p $BUILD_DEST
+BUILD_DEST=/builds/${BUILD_NO}
+mkdir -p ${BUILD_DEST}
 
 echo "npm     : " `npm --version`
 echo "node.js : " `node --version | awk '{print substr($0,2)}'`
@@ -27,6 +26,3 @@ cd ${WORKDIR}/source/${GITHUB_REPO}/public
 tar -cvzf ${BUILD_DEST}/${GITHUB_REPO}.tar.gz *
 cd ${BUILD_DEST}
 sha256sum ${GITHUB_REPO}.tar.gz > ${GITHUB_REPO}.sha256
-
-ls -la ${BUILD_DEST}
-cat ${BUILD_DEST}/${GITHUB_REPO}.sha256
