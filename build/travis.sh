@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 function install() {
   docker-compose pull builder

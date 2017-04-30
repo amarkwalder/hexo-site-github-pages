@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -e
 
 if [ -z "${GITHUB_USER}" ]; then
   echo "ABORT: env GITHUB_USER is missing"
@@ -20,8 +20,6 @@ if [ -z "${BUILD_NO}" ]; then
   echo "ABORT: env BUILD_NO is missing"
   exit 1
 fi
-
-set -e
 
 ghr --version
 ghr --debug -u "${GITHUB_USER}" -r "${GITHUB_REPO}" -b "" "v${BUILD_NO}" /builds/${BUILD_NO}/

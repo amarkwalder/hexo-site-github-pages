@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -e
 
 if [ -z "${GITHUB_USER}" ]; then
   echo "ABORT: env GITHUB_USER is missing"
@@ -15,8 +15,6 @@ if [ -z "${BUILD_NO}" ]; then
   echo "ABORT: env BUILD_NO is missing"
   exit 1
 fi
-
-set -e
 
 WORKDIR=/tmp
 BUILD_DEST=/builds/${BUILD_NO}
