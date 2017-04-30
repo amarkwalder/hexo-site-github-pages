@@ -42,4 +42,4 @@ git remote add origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB
 git push -u origin master --force
 
 ghr --version
-ghr --debug -u "${GITHUB_USER}" -r "${GITHUB_REPO}" -b "${GITHUB_RELTEXT}" "v${BUILD_NO}" /builds/${BUILD_NO}/
+ghr --debug -u "${GITHUB_USER}" -r "${GITHUB_REPO}" -b "${GITHUB_RELTEXT}" "v${BUILD_NO}" ${BUILD_DEST}/
