@@ -23,7 +23,7 @@ fi
 
 WORKDIR=${WORKDIR:-/tmp}
 BUILDS_DIR=${WORKDIR}/builds
-SOURCE_DIR=${WORKDIR}/source
+SOURCE_DIR=${WORKDIR}
 
 echo "npm     : " `npm --version`
 echo "node.js : " `node --version | awk '{print substr($0,2)}'`

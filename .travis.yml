@@ -11,6 +11,7 @@ env:
     - GITHUB_REPO=hexo-site-github-pages
     - BUILD_NO=$(date '+%Y%m%d-%H%M%S')
     - WORKDIR=${TRAVIS_BUILD_DIR}
+
 install:
   - ./build/travis.sh install
 
@@ -19,6 +20,7 @@ script:
 
 deploy:
   provider: script
+  skip_cleanup: true
   script: ./build/travis.sh deploy
 
 branches:
