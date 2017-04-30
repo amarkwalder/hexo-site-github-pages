@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-if [ -z "${WORKDIR}" ]; then
-  echo "ABORT: env WORKDIR is missing"
-  exit 1
-fi
-
 if [ -z "${GITHUB_USER}" ]; then
   echo "ABORT: env GITHUB_USER is missing"
   exit 1
@@ -26,7 +21,7 @@ if [ -z "${BUILD_NO}" ]; then
   exit 1
 fi
 
-WORKDIR=${WORKDIR:-/tmp/${GITHUB_USER}/${GITHUB_REPO}}
+WORKDIR=/tmp
 BUILDS_DIR=${WORKDIR}/builds
 BUILD_DEST=${BUILDS_DIR}/${BUILD_NO}
 

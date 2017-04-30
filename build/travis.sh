@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "${WORKDIR}" ]; then
+  echo "ABORT: env WORKDIR is missing"
+  exit 1
+fi
+
 function install() {
   docker-compose pull builder
   if [ ${?} != 0 ]; then

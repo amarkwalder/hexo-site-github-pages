@@ -7,7 +7,6 @@ services:
       context: .
       dockerfile: Dockerfile.build
     environment:
-      - WORKDIR
       - GITHUB_USER
       - GITHUB_REPO
       - BUILD_NO
@@ -20,7 +19,6 @@ services:
       context: .
       dockerfile: Dockerfile.deploy
     environment:
-      - WORKDIR
       - GITHUB_USER
       - GITHUB_REPO
       - GITHUB_TOKEN
