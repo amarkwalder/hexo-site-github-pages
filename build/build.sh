@@ -31,6 +31,7 @@ if [ ! -d "${WORKDIR}/source/${GITHUB_REPO}" ]; then
 fi
 
 cd ${WORKDIR}/source/${GITHUB_REPO}
+npm install
 hexo generate
 
 cd ${WORKDIR}/source/${GITHUB_REPO}/public
