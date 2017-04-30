@@ -29,6 +29,9 @@ echo "npm     : " `npm --version`
 echo "node.js : " `node --version | awk '{print substr($0,2)}'`
 echo "git     : " `git --version  | awk -F ' ' '{print $3}'`
 
+echo ls -la ${SOURCE_DIR}
+ls -la ${SOURCE_DIR}
+
 if [ ! -d "${SOURCE_DIR}" ]; then
   mkdir -p ${SOURCE_DIR}
   git clone https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git ${SOURCE_DIR}
