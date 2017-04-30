@@ -32,7 +32,7 @@ else
 fi
 
 cd ${BUILD_DEST}/${GITHUB_REPO}
-
+rm -rf .git
 git init
 git config user.email "---"
 git config user.name "---"

@@ -2,7 +2,7 @@ version: '2'
 services:
 
   builder:
-    image: amarkwalder/amarkwalder.github.io-builder:0.1.1
+    image: amarkwalder/amarkwalder.github.io-builder:0.1.0
     build:
       context: .
       dockerfile: Dockerfile.build
@@ -14,7 +14,7 @@ services:
       - ${WORKDIR}/builds:/tmp/builds
 
   deployer:
-    image: amarkwalder/amarkwalder.github.io-deployer:0.1.1
+    image: amarkwalder/amarkwalder.github.io-deployer:0.1.0
     build:
       context: .
       dockerfile: Dockerfile.deploy

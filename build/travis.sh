@@ -25,11 +25,11 @@ function push() {
 }
 
 function build() {
-  docker-compose run builder
+  docker-compose run --rm builder
 }
 
 function deploy() {
-  docker-compose run deployer
+  docker-compose run --rm deployer
 }
 
 function usage() {
