@@ -12,7 +12,7 @@ echo "node.js : " `node --version | awk '{print substr($0,2)}'`
 echo "git     : " `git --version  | awk -F ' ' '{print $3}'`
 
 GITHUB_USER="amarkwalder"
-GITHUB_REPO="amarkwalder.github.io"
+GITHUB_REPO="hexo-site-github-pages"
 
 mkdir -p ${WORKDIR}/source
 if [ ! -d "${WORKDIR}/source/${GITHUB_REPO}" ]; then
