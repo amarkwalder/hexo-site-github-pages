@@ -21,7 +21,7 @@ if [ -z "${BUILD_NO}" ]; then
   exit 1
 fi
 
-WORKDIR=${WORKDIR:-/tmp}
+WORKDIR=${WORKDIR:-/tmp/${GITHUB_USER}/${GITHUB_REPO}}
 BUILDS_DIR=${WORKDIR}/builds
 SOURCE_DIR=${WORKDIR}
 
@@ -29,38 +29,24 @@ echo "npm     : " `npm --version`
 echo "node.js : " `node --version | awk '{print substr($0,2)}'`
 echo "git     : " `git --version  | awk -F ' ' '{print $3}'`
 
-mkdir -p ${SOURCE_DIR}
-
-
-
-echo ls -la ${SOURCE_DIR}
-ls -la ${SOURCE_DIR}
-
-echo ls -la ${SOURCE_DIR}/${GITHUB_USER}
-ls -la ${SOURCE_DIR}/${GITHUB_USER}
-
-echo ls -la ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
-ls -la ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
-
-
-
-if [ ! -d "${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}" ]; then
-  git clone https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
+if [ ! -d "${SOURCE_DIR}" ]; then
+  mkdir -p ${SOURCE_DIR}
+  git clone https://github.com/${GITHUB_USER}/${GITHUB_REPO}.git ${SOURCE_DIR}
 fi
 
-cd ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}
+cd ${SOURCE_DIR}
 npm install
 hexo generate
 
 BUILD_DEST=${BUILDS_DIR}/${BUILD_NO}
 mkdir -p ${BUILD_DEST}
 
-cd ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}/public
+cd ${SOURCE_DIR}/public
 tar -cvzf ${BUILD_DEST}/${GITHUB_REPO}.tar.gz *
 
 cd ${BUILD_DEST}
 sha256sum ${GITHUB_REPO}.tar.gz > ${GITHUB_REPO}.sha256
 
-cd ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}/public
+cd ${SOURCE_DIR}/public
 mkdir -p ${BUILD_DEST}/${GITHUB_REPO}
-cp -r ${SOURCE_DIR}/${GITHUB_USER}/${GITHUB_REPO}/public/* ${BUILD_DEST}/${GITHUB_REPO}/
+cp -r ${SOURCE_DIR}/public/* ${BUILD_DEST}/${GITHUB_REPO}/

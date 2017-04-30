@@ -26,7 +26,7 @@ if [ -z "${BUILD_NO}" ]; then
   exit 1
 fi
 
-WORKDIR=${WORKDIR:-/tmp}
+WORKDIR=${WORKDIR:-/tmp/${GITHUB_USER}/${GITHUB_REPO}}
 BUILDS_DIR=${WORKDIR}/builds
 BUILD_DEST=${BUILDS_DIR}/${BUILD_NO}
 
