@@ -9,14 +9,14 @@ env:
   - BUILD_NO=$(date '+%Y%m%d-%H%M%S')
 
 install:
-  - ./travis-install.sh
+  - ./travis.sh install
 
 script:
-  - ./travis-build.sh
+  - ./travis.sh build
 
 deploy:
   provider: script
-  script: ./travis-deploy.sh
+  script: ./travis.sh deploy
 
 branches:
   only:
