@@ -30,3 +30,5 @@ curl -sSL https://github.com/tcnksm/ghr/releases/download/v0.5.4/ghr_v0.5.4_linu
 unzip ghr.zip
 ./ghr --version
 ./ghr --debug -u DieterReuter -b "$GIT_RELTEXT" $GIT_TAG builds/$BUILD_NO/
+
+
