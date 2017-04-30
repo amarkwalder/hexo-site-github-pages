@@ -6,17 +6,19 @@ services:
 language: bash
 
 env:
+  - GITHUB_USER=amarkwalder
+  - GITHUB_REPO=hexo-site-github-pages
   - BUILD_NO=$(date '+%Y%m%d-%H%M%S')
 
 install:
-  - ./travis.sh install
+  - ./build/travis.sh install
 
 script:
-  - ./travis.sh build
+  - ./build/travis.sh build
 
 deploy:
   provider: script
-  script: ./travis.sh deploy
+  script: ./build/travis.sh deploy
 
 branches:
   only:

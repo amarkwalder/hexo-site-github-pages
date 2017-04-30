@@ -1,17 +1,31 @@
 #!/bin/bash
-set -e
 set -x
+
+if [ -z "${GITHUB_USER}" ]; then
+  echo "ABORT: env GITHUB_USER is missing"
+  exit 1
+fi
+
+if [ -z "${GITHUB_REPO}" ]; then
+  echo "ABORT: env GITHUB_REPO is missing"
+  exit 1
+fi
+
+if [ -z "${BUILD_NO}" ]; then
+  echo "ABORT: env BUILD_NO is missing"
+  exit 1
+fi
+
+set -e
 
 WORKDIR=/tmp
 BUILD_DEST=/builds/${BUILD_NO}
+
 mkdir -p ${BUILD_DEST}
 
 echo "npm     : " `npm --version`
 echo "node.js : " `node --version | awk '{print substr($0,2)}'`
 echo "git     : " `git --version  | awk -F ' ' '{print $3}'`
-
-GITHUB_USER="amarkwalder"
-GITHUB_REPO="hexo-site-github-pages"
 
 mkdir -p ${WORKDIR}/source
 if [ ! -d "${WORKDIR}/source/${GITHUB_REPO}" ]; then

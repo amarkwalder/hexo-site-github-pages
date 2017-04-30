@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+  builder:
+    image: amarkwalder/amarkwalder.github.io-builder
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    environment:
+      - GITHUB_USER
+      - GITHUB_REPO
+      - BUILD_NO
+    volumes:
+      - ./builds:/builds
+
+  deployer:
+    image: amarkwalder/amarkwalder.github.io-deployer
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy
+    environment:
+      - GITHUB_USER
+      - GITHUB_REPO
+      - GITHUB_TOKEN
+      - BUILD_NO
+    volumes:
+      - ./builds:/builds
